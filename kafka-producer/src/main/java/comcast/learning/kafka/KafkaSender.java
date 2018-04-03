@@ -19,7 +19,7 @@ public class KafkaSender {
 	        this.kafkaTemplate=kafkaTemplate;
 	    }
 	
-	@Value("${kafka.productstore.topic}")
+	@Value("${spring.kafka.template.default-topic}")
 	String kafkaTopic;
 
 	 private static final Logger lOG = LoggerFactory.getLogger(KafkaSender.class);
