@@ -12,18 +12,24 @@ public class KafkaSender {
 
 	
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate kafkaTemplate;
 	
-	/* @Value("${kafka.productstore.topic}")
-	String kafkaTopic;*/
+	
+	  public KafkaSender(KafkaTemplate kafkaTemplate){
+	        this.kafkaTemplate=kafkaTemplate;
+	    }
+	
+	@Value("${kafka.productstore.topic}")
+	String kafkaTopic;
 
 	 private static final Logger lOG = LoggerFactory.getLogger(KafkaSender.class);
 	 
 	public void send(String message) {
 	    
 	lOG.info("sending message='{}' to topic='{}'", message, "product-topics");
+	
 	    
-	kafkaTemplate.send("product-topics","create");
+	kafkaTemplate.send(kafkaTopic,message);
 	
 	   
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +20,21 @@ import comcast.learning.service.ProductServiceImpl;
 @RestController
 @RequestMapping("/store")
 public class ProductController {
+	
+	private KafkaTemplate kafkaTemplate;
+	
+	
+	  public  ProductController(KafkaTemplate kafkaTemplate){
+	        this.kafkaTemplate=kafkaTemplate;
+	    }
 
 	Product product = new Product();
 
 	@Autowired
 	ProductServiceImpl productServiceImpl;
+	
+	@Autowired
+	KafkaSender kafkaSender;
 
 	@GetMapping(value = "/listAllProducts")
 	public List<Product> listAllProducts() {
@@ -54,9 +65,11 @@ public class ProductController {
 
 		String response = productServiceImpl.createProduct(request);
 
-		KafkaSender kafkaSender = new KafkaSender();
 
-		kafkaSender.send("create");
+
+		kafkaSender.send(request.getProductName() + " - Product Created Successfully");
+		
+		//kafkaTemplate.send("product-topics\",request.getProductName() + \" - Product Created Successfully");
 
 		return response;
 
@@ -76,9 +89,10 @@ public class ProductController {
 	public String deletePerson(@PathVariable(value = "id") int productId) {
 
 		String response = productServiceImpl.deleteProduct(productId);
-		KafkaSender kafkaSender = new KafkaSender();
 
-		kafkaSender.send("delete");
+
+
+		kafkaSender.send("delete");*/
 		return response;
 
 	}
