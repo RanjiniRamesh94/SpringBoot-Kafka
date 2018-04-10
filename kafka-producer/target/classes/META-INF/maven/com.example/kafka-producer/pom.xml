@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>kafka-consumer</artifactId>
+	<artifactId>kafka-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springboot-actuator</name>
+	<name>kafka-producer</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -74,13 +74,6 @@
 			<version>2.6.1</version>
 			<scope>compile</scope>
 		</dependency>
-
-	<!-- 	<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>kafka-producer</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-
-		</dependency> -->
 	</dependencies>
 
 	<build>

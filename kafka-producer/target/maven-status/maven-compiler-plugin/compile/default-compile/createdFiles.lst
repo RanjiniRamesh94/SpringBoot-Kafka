@@ -1,0 +1,10 @@
+comcast\learning\kafka\KafkaSender.class
+comcast\learning\model\Product.class
+comcast\learning\kafka\SenderConfig.class
+comcast\learning\configuration\SwaggerConfig.class
+comcast\learning\KafkaProducerApplication.class
+comcast\learning\controller\ProductController.class
+comcast\learning\custom\actuators\CustomHealthCheck.class
+comcast\learning\repository\ProductRepo.class
+comcast\learning\service\ProductServiceImpl.class
+comcast\learning\service\ProductService.class
